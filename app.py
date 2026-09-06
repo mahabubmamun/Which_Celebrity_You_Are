@@ -236,8 +236,8 @@ if uploaded_file is not None:
 
                         image_path = Path(best_filename)
 
-                        # st.write("Image path:", image_path)
-                        # st.write("Image exists:", image_path.exists())
+                        st.write("Image path:", image_path)
+                        st.write("Image exists:", image_path.exists())
 
                         if image_path.exists():
 
