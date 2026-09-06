@@ -217,11 +217,11 @@ if uploaded_file is not None:
                     embedding
                 )
 
-                # Extract celebrity name
-                celebrity_name = best_filename.split("\\")[-2]
+                # Convert Windows path to Linux-compatible path
+                best_filename = best_filename.replace("\\", "/")
 
-                # Windows/Linux compatibility
-                celebrity_name = best_filename.replace("\\", "/").split("/")[-2]
+                # Extract celebrity name
+                celebrity_name = best_filename.split("/")[-2]
 
 
                 # --------------------------------------------------
@@ -233,26 +233,32 @@ if uploaded_file is not None:
                     st.subheader("Your Celebrity Match")
 
                     try:
+                        celebrity_image = Image.open(best_filename)
 
-                        image_path = Path(best_filename)
+                        st.image(
+                            celebrity_image,
+                            use_container_width=True
+                        )
 
-                        st.write("Image path:", image_path)
-                        st.write("Image exists:", image_path.exists())
+                        # image_path = Path(best_filename)
 
-                        if image_path.exists():
+                        # st.write("Image path:", image_path)
+                        # st.write("Image exists:", image_path.exists())
 
-                            celebrity_image = Image.open(image_path)
+                        # if image_path.exists():
 
-                            st.image(
-                                celebrity_image,
-                                use_container_width=True
-                            )
+                        #     celebrity_image = Image.open(image_path)
 
-                        else:
+                        #     st.image(
+                        #         celebrity_image,
+                        #         use_container_width=True
+                        #     )
 
-                            st.error(
-                                f"Celebrity image not found: {image_path}"
-                            )
+                        # else:
+
+                        #     st.error(
+                        #         f"Celebrity image not found: {image_path}"
+                        #     )
 
                     except Exception as e:
 
