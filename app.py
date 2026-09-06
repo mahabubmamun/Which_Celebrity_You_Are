@@ -6,7 +6,7 @@ from PIL import Image
 from keras_facenet import FaceNet
 from mtcnn import MTCNN
 from sklearn.metrics.pairwise import cosine_similarity
-
+from pathlib import Path
 
 # --------------------------------------------------
 # Page Configuration
@@ -234,20 +234,29 @@ if uploaded_file is not None:
 
                     try:
 
-                        celebrity_image = Image.open(
-                            best_filename
-                        )
+                        image_path = Path(best_filename)
 
-                        st.image(
-                            celebrity_image,
-                            use_container_width=True
-                        )
+                        # st.write("Image path:", image_path)
+                        # st.write("Image exists:", image_path.exists())
 
-                    except Exception:
+                        if image_path.exists():
 
-                        st.warning(
-                            "Celebrity image could not be displayed."
-                        )
+                            celebrity_image = Image.open(image_path)
+
+                            st.image(
+                                celebrity_image,
+                                use_container_width=True
+                            )
+
+                        else:
+
+                            st.error(
+                                f"Celebrity image not found: {image_path}"
+                            )
+
+                    except Exception as e:
+
+                        st.error(f"Error loading celebrity image: {e}")
 
 
                 st.success(
