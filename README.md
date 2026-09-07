@@ -6,7 +6,7 @@ The application detects a face from the uploaded image, generates its facial emb
 
 ## 🚀 Live Demo
 
-👉 [Try the App](https://which-celebrity-your-are.streamlit.app)
+👉 [Try the App]([https://which-celebrity-your-are.streamlit.app](https://which-celebrity-you-are.streamlit.app/))
 
 ---
 
