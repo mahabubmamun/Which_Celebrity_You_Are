@@ -90,7 +90,7 @@ print("Images:", len(filenames))
 # 3. Load test image
 # =========================================================
 
-sample_path = "sample/jerifa.jpg"
+sample_path = "sample/sahruk.jpg"
 
 sample_img = cv2.imread(sample_path)
 
