@@ -1,34 +1,44 @@
-🎭 Which Celebrity Are You?
-An AI-powered face similarity application that identifies the celebrity a user most closely resembles based on facial features extracted from an uploaded image.
+# 🎭 Dorpon - Which Celebrity Are You?
 
-https://img.shields.io/badge/Python-3.11-blue?logo=python
-https://img.shields.io/badge/TensorFlow-2.17-orange?logo=tensorflow
-https://img.shields.io/badge/Streamlit-App-red?logo=streamlit
-https://img.shields.io/badge/OpenCV-Computer%2520Vision-green?logo=opencv
-https://img.shields.io/badge/License-MIT-yellow.svg
+> An AI-powered face similarity application that identifies the celebrity a user most closely resembles based on facial features extracted from an uploaded image.
 
-🌐 Live Demo
-🚀 Try the application:
+[![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.17-orange?logo=tensorflow)](https://www.tensorflow.org/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-red?logo=streamlit)](https://streamlit.io/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-Computer%20Vision-green?logo=opencv)](https://opencv.org/)
+
+---
+
+## 🌐 Live Demo
+
+🚀 **Try the application:**  
 https://which-celebrity-your-are.streamlit.app
 
 Upload a photo, and the application detects the face, extracts facial features using FaceNet, and finds the most similar celebrity from the reference dataset.
 
-🖥️ Application Preview
-https://assets/home.png
+---
 
-https://assets/result.png
+## 🖥️ Application Preview
 
-https://assets/prediction.png
+![Home Page](assets/home.png)
 
-Note: Replace the image paths above with your actual screenshots.
+![Face Matching Result](assets/result.png)
 
-📌 Project Overview
-Which Celebrity Are You? is a computer vision application built using deep face embeddings and similarity search.
+![Example Prediction](assets/prediction.png)
 
-Instead of training a traditional image classification model, this project uses a pre-trained FaceNet model to convert faces into numerical feature vectors (embeddings). The uploaded face is then compared against a collection of celebrity face embeddings using cosine similarity.
+*Note: Replace the image paths above with your actual screenshots.*
 
-How it works
-text
+---
+
+## 📌 Project Overview
+
+** Dorpon - Which Celebrity You Are?** is a computer vision application built using deep face embeddings and similarity search.
+
+Instead of training a traditional image classification model, this project uses a **pre-trained FaceNet model** to convert faces into numerical feature vectors (embeddings). The uploaded face is then compared against a collection of celebrity face embeddings using **cosine similarity**.
+
+### How it works
+
+```text
 User Uploads Image
         │
         ▼
@@ -51,75 +61,83 @@ Find Most Similar Face
         │
         ▼
 Celebrity Name + Image
-✨ Key Features
-📷 Upload JPG, JPEG, or PNG images
+```
 
-👤 Automatic face detection using MTCNN
+---
 
-🧠 Deep facial feature extraction using FaceNet
+## ✨ Key Features
 
-🔢 512-dimensional face embeddings
+- 📷 Upload JPG, JPEG, or PNG images
+- 👤 Automatic face detection using MTCNN
+- 🧠 Deep facial feature extraction using FaceNet
+- 🔢 512-dimensional face embeddings
+- 📐 Cosine similarity-based face matching
+- 🖼️ Displays the closest celebrity match
+- 📊 Shows similarity score
+- ⚡ Fast inference using pre-computed celebrity embeddings
+- ☁️ Deployed using Streamlit Community Cloud
+- 📱 Simple and interactive web interface
 
-📐 Cosine similarity-based face matching
+---
 
-🖼️ Displays the closest celebrity match
+## 🧠 Machine Learning Approach
 
-📊 Shows similarity score
+### 1. Face Detection
 
-⚡ Fast inference using pre-computed celebrity embeddings
-
-☁️ Deployed using Streamlit Community Cloud
-
-📱 Simple and interactive web interface
-
-🧠 Machine Learning Approach
-1. Face Detection
-The uploaded image is processed using MTCNN (Multi-task Cascaded Convolutional Networks).
+The uploaded image is processed using **MTCNN** (Multi-task Cascaded Convolutional Networks).
 
 MTCNN identifies the face region and provides its bounding box.
 
 For images containing multiple faces, the application selects the largest detected face.
 
-2. Face Preprocessing
+### 2. Face Preprocessing
+
 The detected face is:
 
-Converted to RGB
-
-Cropped using the detected bounding box
-
-Resized to 160 × 160 pixels
+- Converted to RGB
+- Cropped using the detected bounding box
+- Resized to 160 × 160 pixels
 
 This produces a standardized input for FaceNet.
 
-3. Face Embedding
-The processed face is passed through a pre-trained FaceNet model.
+### 3. Face Embedding
 
-FaceNet converts each face into a 512-dimensional embedding vector representing its facial characteristics.
+The processed face is passed through a pre-trained **FaceNet** model.
+
+FaceNet converts each face into a **512-dimensional embedding vector** representing its facial characteristics.
 
 Example:
 
-text
+```text
 Input Face
     ↓
 FaceNet
     ↓
 [0.021, -0.184, 0.093, ..., 0.417]
         512 dimensions
+```
+
 The embedding is L2-normalized before similarity comparison.
 
-4. Similarity Matching
-The uploaded face embedding is compared with the stored celebrity embeddings using cosine similarity.
+### 4. Similarity Matching
+
+The uploaded face embedding is compared with the stored celebrity embeddings using **cosine similarity**.
 
 The similarity between two embeddings is calculated as:
 
-text
+```text
 cosine_similarity(A, B) = (A · B) / (||A|| ||B||)
+```
+
 The celebrity image with the highest similarity score is selected as the final match.
 
-🗂️ Dataset & Embeddings
+---
+
+## 🗂️ Dataset & Embeddings
+
 The project uses a directory-based celebrity face dataset.
 
-text
+```text
 data/
 ├── Celebrity_1/
 │   ├── image_01.jpg
@@ -132,17 +150,22 @@ data/
 │   └── ...
 │
 └── ...
+```
+
 Instead of generating embeddings every time a user uploads an image, the celebrity embeddings are generated beforehand and stored in:
 
-text
+```text
 embedding.pkl
 filenames.pkl
+```
+
 This significantly reduces inference time.
 
-Embedding generation
+### Embedding generation
+
 Each valid image goes through:
 
-text
+```text
 Image
  ↓
 MTCNN Face Detection
@@ -154,10 +177,15 @@ Resize 160×160
 FaceNet
  ↓
 512-D Embedding
+```
+
 Only images where a face is successfully detected are included in the final embedding database.
 
-🏗️ Project Structure
-text
+---
+
+## 🏗️ Project Structure
+
+```text
 Which_Celebrity_You_Are/
 │
 ├── app.py
@@ -183,53 +211,84 @@ Which_Celebrity_You_Are/
     ├── Celebrity_2/
     ├── Celebrity_3/
     └── ...
-🛠️ Technology Stack
-Category	Technology
-Programming Language	Python
-Deep Learning	TensorFlow, Keras
-Face Embeddings	FaceNet
-Face Detection	MTCNN
-Computer Vision	OpenCV
-Numerical Computing	NumPy
-Similarity Search	Scikit-learn
-Web Application	Streamlit
-Model Storage	Pickle
-Version Control	Git & GitHub
-Deployment	Streamlit Community Cloud
-⚙️ Installation & Setup
-1. Clone the repository
-bash
+```
+
+---
+
+## 🛠️ Technology Stack
+
+| Category | Technology |
+|---|---|
+| Programming Language | Python |
+| Deep Learning | TensorFlow, Keras |
+| Face Embeddings | FaceNet |
+| Face Detection | MTCNN |
+| Computer Vision | OpenCV |
+| Numerical Computing | NumPy |
+| Similarity Search | Scikit-learn |
+| Web Application | Streamlit |
+| Model Storage | Pickle |
+| Version Control | Git & GitHub |
+| Deployment | Streamlit Community Cloud |
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the repository
+
+```bash
 git clone https://github.com/mahabubmamun/Which_Celebrity_You_Are.git
 
 cd Which_Celebrity_You_Are
-2. Create a virtual environment
-Windows
+```
 
-bash
+### 2. Create a virtual environment
+
+**Windows**
+
+```bash
 python -m venv venv
+```
+
 Activate it:
 
-bash
+```bash
 venv\Scripts\activate
-Linux / macOS
+```
 
-bash
+**Linux / macOS**
+
+```bash
 python3 -m venv venv
 source venv/bin/activate
-3. Install dependencies
-bash
+```
+
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
-4. Run the application
-bash
+```
+
+### 4. Run the application
+
+```bash
 streamlit run app.py
+```
+
 The application will be available at:
 
-text
+```text
 http://localhost:8501
-📦 Requirements
+```
+
+---
+
+## 📦 Requirements
+
 Main dependencies include:
 
-text
+```text
 streamlit
 tensorflow==2.17.1
 keras==3.5.0
@@ -239,10 +298,15 @@ opencv-python-headless
 pillow
 scikit-learn
 numpy
-The project uses Python 3.11 for compatibility with the TensorFlow version used in the application.
+```
 
-🔬 Model Pipeline
-text
+The project uses **Python 3.11** for compatibility with the TensorFlow version used in the application.
+
+---
+
+## 🔬 Model Pipeline
+
+```text
                    ┌──────────────────┐
                    │   Input Image    │
                    └────────┬─────────┘
@@ -276,11 +340,17 @@ text
                    │ Best Celebrity   │
                    │      Match       │
                    └──────────────────┘
-🚀 Performance Optimization
-A key design decision was to pre-compute embeddings for the celebrity dataset.
+```
 
-Without pre-computation
-text
+---
+
+## 🚀 Performance Optimization
+
+A key design decision was to **pre-compute embeddings** for the celebrity dataset.
+
+### Without pre-computation
+
+```text
 Upload Image
      ↓
 Process entire dataset
@@ -290,10 +360,13 @@ Generate embeddings
 Compare
      ↓
 Prediction
+```
+
 This would be computationally expensive for every request.
 
-With pre-computation
-text
+### With pre-computation
+
+```text
 Celebrity Dataset
        ↓
 FaceNet
@@ -311,41 +384,47 @@ User Image → FaceNet → Query Embedding
                          │
                          ▼
                     Prediction
+```
+
 This allows the application to perform similarity search directly against the stored embeddings.
 
-🧪 Testing
+---
+
+## 🧪 Testing
+
 The project includes a testing workflow to verify:
 
-Face detection
-
-Face preprocessing
-
-Embedding generation
-
-Embedding dimensions
-
-Similarity calculation
-
-Top matching images
+- Face detection
+- Face preprocessing
+- Embedding generation
+- Embedding dimensions
+- Similarity calculation
+- Top matching images
 
 Example embedding shape:
 
-text
+```text
 (8526, 512)
+```
+
 where:
 
-8526 = successfully processed face images
-
-512 = FaceNet embedding dimension
+- `8526` = successfully processed face images
+- `512` = FaceNet embedding dimension
 
 The embedding and filename databases are kept aligned so that:
 
-python
+```python
 len(embeddings) == len(filenames)
-🔍 Example Result
+```
+
+---
+
+## 🔍 Example Result
+
 Given an uploaded image:
 
-text
+```text
              Uploaded Image
                     │
                     ▼
@@ -365,73 +444,71 @@ text
           │                     │
           │ Similarity: 91.XX%  │
           └─────────────────────┘
-📈 Possible Future Improvements
+```
+
+---
+
+## 📈 Possible Future Improvements
+
 The current application uses nearest-neighbor similarity matching. Several improvements could make the system more robust:
 
-Face alignment using facial landmarks
+- Face alignment using facial landmarks
+- Top-K similarity aggregation by celebrity
+- Celebrity-level embedding aggregation
+- Better similarity threshold calibration
+- Improved dataset balancing
+- Multiple-face selection UI
+- More robust handling of low-quality images
+- GPU-based inference
+- Vector database integration for larger datasets
+- REST API using FastAPI
+- Mobile-friendly UI
+- Automated evaluation on a dedicated test set
 
-Top-K similarity aggregation by celebrity
+---
 
-Celebrity-level embedding aggregation
+## ⚠️ Limitations
 
-Better similarity threshold calibration
-
-Improved dataset balancing
-
-Multiple-face selection UI
-
-More robust handling of low-quality images
-
-GPU-based inference
-
-Vector database integration for larger datasets
-
-REST API using FastAPI
-
-Mobile-friendly UI
-
-Automated evaluation on a dedicated test set
-
-⚠️ Limitations
-This project is intended as an educational computer vision demonstration, not a biometric identification system.
+This project is intended as an **educational computer vision demonstration**, not a biometric identification system.
 
 The prediction represents the closest match within the project's reference dataset and should not be interpreted as establishing a person's identity.
 
 Performance can vary depending on:
 
-Image quality
+- Image quality
+- Lighting conditions
+- Face angle
+- Occlusion
+- Facial expression
+- Dataset diversity
+- Similarity between individuals
 
-Lighting conditions
+---
 
-Face angle
+## 🔐 Privacy
 
-Occlusion
-
-Facial expression
-
-Dataset diversity
-
-Similarity between individuals
-
-🔐 Privacy
 Uploaded images are processed for the purpose of generating a prediction. Users should avoid uploading sensitive or private images.
 
 The application is intended for demonstration and educational purposes.
 
-👨‍💻 Author
-Md. Mahabub Hasan Mamun
+---
+
+## 👨‍💻 Author
+
+**Md. Mahabub Hasan Mamun**
 
 ML Engineer | AI & Data Science Enthusiast
 
-Computer Science & Engineering
+Computer Science & Engineering  
 University of Dhaka
 
-GitHub: https://github.com/mahabubmamun
+- GitHub: [https://github.com/mahabubmamun](https://github.com/mahabubmamun)
+- LinkedIn: [https://www.linkedin.com/in/mahabub-hasan-mamun/](https://www.linkedin.com/in/mahabub-hasan-mamun/)
 
-LinkedIn: https://www.linkedin.com/in/mahabub-hasan-mamun/
+---
 
-Kaggle: https://www.kaggle.com/mahabub001cs
+## ⭐ If You Like This Project
 
-⭐ If You Like This Project
 If you find this project useful or interesting, consider giving the repository a ⭐ on GitHub.
 
+---
