@@ -12,7 +12,7 @@
 ## 🌐 Live Demo
 
 🚀 **Try the application:**  
-https://which-celebrity-your-are.streamlit.app
+[https://which-celebrity-your-are.streamlit.app](https://which-celebrity-you-are.streamlit.app/)
 
 Upload a photo, and the application detects the face, extracts facial features using FaceNet, and finds the most similar celebrity from the reference dataset.
 
