@@ -467,29 +467,10 @@ The current application uses nearest-neighbor similarity matching. Several impro
 
 ---
 
-## ⚠️ Limitations
-
-This project is intended as an **educational computer vision demonstration**, not a biometric identification system.
-
-The prediction represents the closest match within the project's reference dataset and should not be interpreted as establishing a person's identity.
-
-Performance can vary depending on:
-
-- Image quality
-- Lighting conditions
-- Face angle
-- Occlusion
-- Facial expression
-- Dataset diversity
-- Similarity between individuals
-
----
 
 ## 🔐 Privacy
 
-Uploaded images are processed for the purpose of generating a prediction. Users should avoid uploading sensitive or private images.
-
-The application is intended for demonstration and educational purposes.
+Uploaded images are processed for only the purpose of generating a prediction. Images are not stored in a database, so there is no privacy issue.
 
 ---
 
@@ -497,7 +478,7 @@ The application is intended for demonstration and educational purposes.
 
 **Md. Mahabub Hasan Mamun**
 
-ML Engineer | AI & Data Science Enthusiast
+AI Engineer | Machine Learning & Data Science Enthusiast
 
 Computer Science & Engineering  
 University of Dhaka
