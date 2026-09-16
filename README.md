@@ -19,11 +19,13 @@ Upload a photo, and the application detects the face, extracts facial features u
 ---
 
 ## 🖥️ Application Preview
-
+# User interface
 ![Home Page](assets/home.png)
 
+# Detecting best celebrity match with your face
 ![Face Matching Result](assets/result.png)
 
+# Showing celebrity name and similarity score
 ![Example Prediction](assets/prediction.png)
 
 *Note: Replace the image paths above with your actual screenshots.*
